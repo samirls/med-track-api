@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.List;
@@ -55,12 +56,11 @@ public class ProntuarioController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Object> getProntuarioById(@PathVariable(value = "id") Long id) {
-        Optional<ProntuarioModel> prontuarioModelOptional = prontuarioService.findById(id);
-        if (!prontuarioModelOptional.isPresent()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");
-        }
-        return ResponseEntity.status(HttpStatus.OK).body(prontuarioModelOptional.get());
+    @ResponseStatus(HttpStatus.OK)
+    public ProntuarioModel getProntuarioById(@PathVariable Long id, Principal principal) {
+        //verificar role do usuario antes de retornar os dados
+        //principal é a secretaria, ver se é ela mesmo e passar dados
+        return prontuarioService.findById(id);
     }
 
     @GetMapping("/nome/{nome}")
@@ -74,11 +74,8 @@ public class ProntuarioController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> deleteProntuario(@PathVariable(value = "id") Long id) {
-        Optional<ProntuarioModel> prontuarioModelOptional = prontuarioService.findById(id);
-        if (!prontuarioModelOptional.isPresent()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado");
-        }
-        prontuarioService.delete(prontuarioModelOptional.get());
+        ProntuarioModel prontuarioModelOptional = prontuarioService.findById(id);
+        prontuarioService.delete(prontuarioModelOptional);
         return ResponseEntity.status(HttpStatus.OK).body("Prontuario deletado com sucesso.");
 
     }
@@ -86,11 +83,7 @@ public class ProntuarioController {
     @PutMapping("/{id}")
     public ResponseEntity<Object> updateProntuario(@PathVariable(value = "id") Long id,
                                                    @RequestBody @Valid ProntuarioDto prontuarioDto) {
-        Optional<ProntuarioModel> prontuarioModelOptional = prontuarioService.findById(id);
-        if (!prontuarioModelOptional.isPresent()){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado");
-        }
-        ProntuarioModel prontuarioModel = prontuarioModelOptional.get();
+        ProntuarioModel prontuarioModel = prontuarioService.findById(id);
         prontuarioModel.setNome(prontuarioDto.getNome());
         prontuarioModel.setEmail(prontuarioDto.getEmail());
         prontuarioModel.setSexo(prontuarioDto.getSexo());

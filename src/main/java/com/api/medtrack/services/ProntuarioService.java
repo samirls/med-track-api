@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ProntuarioService {
@@ -37,12 +36,12 @@ public class ProntuarioService {
 
     }
 
-    public Optional<ProntuarioModel> findById(Long id) {
-        return prontuarioRepository.findById(id);
+    public ProntuarioModel findById(Long id) {
+        return prontuarioRepository.findById(id).orElseThrow(() -> new RuntimeException("Id not found"));
     }
 
     public List<ProntuarioModel> findByNome(String nome) {
-        return prontuarioRepository.findByNomeIgnoreCaseLike("%" + nome + "%");
+        return prontuarioRepository.findByNomeContainingIgnoreCase(nome);
     }
 
     @Transactional
