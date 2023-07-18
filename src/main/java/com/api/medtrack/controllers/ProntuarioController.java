@@ -43,7 +43,7 @@ public class ProntuarioController {
         }
         ProntuarioModel prontuarioModel = new ProntuarioModel();
         BeanUtils.copyProperties(prontuarioDto, prontuarioModel);
-        prontuarioModel.setDataDaConsulta(LocalDateTime.now(ZoneId.of("UTC")));
+        prontuarioModel.setDataDeRegistro(LocalDateTime.now(ZoneId.of("UTC")));
         return ResponseEntity.status(HttpStatus.CREATED).body(prontuarioService.save(prontuarioModel));
     }
 

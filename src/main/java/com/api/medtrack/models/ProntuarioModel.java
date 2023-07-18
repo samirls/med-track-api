@@ -1,5 +1,7 @@
 package com.api.medtrack.models;
 
+import org.springframework.security.access.prepost.PreAuthorize;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -46,7 +48,7 @@ public class ProntuarioModel implements Serializable {
     @Column(nullable = false)
     private String consulta;
 
-    private LocalDateTime dataDaConsulta;
+    private LocalDateTime dataDeRegistro;
 
 
     public Long getId() {
@@ -161,12 +163,12 @@ public class ProntuarioModel implements Serializable {
         this.consulta = consulta;
     }
 
-    public LocalDateTime getDataDaConsulta() {
-        return dataDaConsulta;
+    public LocalDateTime getdataDeRegistro() {
+        return dataDeRegistro;
     }
 
-    public void setDataDaConsulta(LocalDateTime dataDaConsulta) {
-        this.dataDaConsulta = dataDaConsulta;
+    public void setDataDeRegistro(LocalDateTime dataDeRegistro) {
+        this.dataDeRegistro = dataDeRegistro;
     }
 
 }

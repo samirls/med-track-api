@@ -18,6 +18,6 @@ public class MedTrackApplication {
 
 	@GetMapping("/")
 	public String index(){
-		return "Med Track";
+		return "Med Track backend & database are working";
 	}
 }

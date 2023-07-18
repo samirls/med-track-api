@@ -6,6 +6,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -23,10 +24,17 @@ public class UserModel implements UserDetails, Serializable {
     @Column(nullable = false)
     private String password;
 
+    @ManyToMany
+    @JoinTable(name = "USERS_ROLES", //cria tabela intermediária entre UserModel e Role Model
+            joinColumns = @JoinColumn(name = "user_id"), //especifica a coluna da tabela intermediaria que se relaciona com a tabela de usuários
+            inverseJoinColumns = @JoinColumn(name = "role_id")) // especifica a coluna da tabela intermediária que se relaciona com a tabela de ROLES
+    private List<RoleModel> roles; //lista de objetos RoleModel para cada usuário
+
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return this.roles;
     }
 
     @Override
