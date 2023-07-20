@@ -13,7 +13,7 @@ public class MedTrackApplication {
 	public static void main(String[] args) {
 
 		SpringApplication.run(MedTrackApplication.class, args);
-		System.out.println(new BCryptPasswordEncoder().encode("123"));
+
 	}
 
 	@GetMapping("/")

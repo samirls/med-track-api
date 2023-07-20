@@ -1,14 +1,15 @@
 package com.api.medtrack.models;
 
+import jakarta.persistence.*;
 import org.springframework.security.access.prepost.PreAuthorize;
 
-import javax.persistence.*;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
-@Table (name = "PRONTUARIO")
+@Table(name = "PRONTUARIO")
 public class ProntuarioModel implements Serializable {
 
     private static final long serialVersionUID = 1L; //coisa da JVM, não mexer

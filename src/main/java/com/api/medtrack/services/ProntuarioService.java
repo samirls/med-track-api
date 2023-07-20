@@ -2,11 +2,12 @@ package com.api.medtrack.services;
 
 import com.api.medtrack.models.ProntuarioModel;
 import com.api.medtrack.repositories.ProntuarioRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
+
 import java.util.List;
 
 @Service

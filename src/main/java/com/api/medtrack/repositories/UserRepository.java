@@ -1,14 +1,10 @@
 package com.api.medtrack.repositories;
 
-import com.api.medtrack.models.UserModel;
+
+import com.api.medtrack.domain.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Optional;
-import java.util.UUID;
-
-@Repository
-public interface UserRepository extends JpaRepository<UserModel, UUID> {
-
-    Optional<UserModel> findByUsername(String username);
+public interface UserRepository extends JpaRepository<User, String> {
+    UserDetails findByLogin(String login);
 }

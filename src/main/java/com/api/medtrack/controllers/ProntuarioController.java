@@ -3,6 +3,7 @@ package com.api.medtrack.controllers;
 import com.api.medtrack.dtos.ProntuarioDto;
 import com.api.medtrack.models.ProntuarioModel;
 import com.api.medtrack.services.ProntuarioService;
+import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,7 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
+
 import java.security.Principal;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
