@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseCookie;
+import org.springframework.http.HttpHeaders;
 
 @RestController
 @RequestMapping("auth")
@@ -50,4 +52,5 @@ public class AuthenticationController {
 
         return ResponseEntity.ok().build();
     }
+
 }

@@ -46,7 +46,7 @@ public class ProntuarioModel implements Serializable {
 
     private String alergias;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "text")
     private String consulta;
 
     private LocalDateTime dataDeRegistro;
