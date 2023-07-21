@@ -1,5 +1,6 @@
 package com.api.medtrack.services;
 
+import com.api.medtrack.models.ConsultaModel;
 import com.api.medtrack.models.ProntuarioModel;
 import com.api.medtrack.repositories.ProntuarioRepository;
 import jakarta.transaction.Transactional;

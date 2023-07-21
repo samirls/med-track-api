@@ -1,5 +1,6 @@
 package com.api.medtrack.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import org.springframework.security.access.prepost.PreAuthorize;
 
@@ -7,6 +8,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "PRONTUARIO")
@@ -46,8 +48,9 @@ public class ProntuarioModel implements Serializable {
 
     private String alergias;
 
-    @Column(nullable = false, columnDefinition = "text")
-    private String consulta;
+    @JsonManagedReference
+    @OneToMany(mappedBy = "prontuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ConsultaModel> consultas;
 
     private LocalDateTime dataDeRegistro;
 
@@ -156,12 +159,12 @@ public class ProntuarioModel implements Serializable {
         this.alergias = alergias;
     }
 
-    public String getConsulta() {
-        return consulta;
+    public List<ConsultaModel> getConsultas() {
+        return consultas;
     }
 
-    public void setConsulta(String consulta) {
-        this.consulta = consulta;
+    public void setConsultas(List<ConsultaModel> consultas) {
+        this.consultas = consultas;
     }
 
     public LocalDateTime getdataDeRegistro() {

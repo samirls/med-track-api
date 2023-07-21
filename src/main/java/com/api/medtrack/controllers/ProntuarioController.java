@@ -52,7 +52,7 @@ public class ProntuarioController {
     @GetMapping
     public ResponseEntity<Page<ProntuarioModel>> getAllProntuarios
             (@PageableDefault
-                     (page = 0, size = 5, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+                     (page = 0, size = 20, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
         return ResponseEntity.status(HttpStatus.OK).body(prontuarioService.findAll(pageable));
     }
 
@@ -97,7 +97,6 @@ public class ProntuarioController {
         prontuarioModel.setEstado(prontuarioDto.getEstado());
         prontuarioModel.setTipoSanguineo(prontuarioDto.getTipoSanguineo());
         prontuarioModel.setAlergias(prontuarioDto.getAlergias());
-        prontuarioModel.setConsulta(prontuarioDto.getConsulta());
 
         return ResponseEntity.status(HttpStatus.OK).body(prontuarioService.save(prontuarioModel));
     }

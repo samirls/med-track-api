@@ -38,9 +38,6 @@ public class ProntuarioDto {
 
     private String alergias;
 
-    @NotBlank
-    private String consulta;
-
     private LocalDateTime dataDaConsulta;
 
 
@@ -138,14 +135,6 @@ public class ProntuarioDto {
 
     public void setAlergias(String alergias) {
         this.alergias = alergias;
-    }
-
-    public String getConsulta() {
-        return consulta;
-    }
-
-    public void setConsulta(String consulta) {
-        this.consulta = consulta;
     }
 
     public LocalDateTime getDataDaConsulta() {
