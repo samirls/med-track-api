@@ -50,9 +50,12 @@ public class ProntuarioController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<ProntuarioModel>> getAllProntuarios
-            (@PageableDefault
-                     (page = 0, size = 20, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+    public ResponseEntity<Page<ProntuarioModel>> getAllProntuarios(
+            @PageableDefault(
+                    page = 0,
+                    size = 5,
+                    sort = "id",
+                    direction = Sort.Direction.DESC) Pageable pageable) {
         return ResponseEntity.status(HttpStatus.OK).body(prontuarioService.findAll(pageable));
     }
 
