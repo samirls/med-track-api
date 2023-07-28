@@ -1,7 +1,7 @@
 name: minha-clinica Pipeline
 on:
   push:
-    branches: [master]
+    branches: [main]
 
 jobs:
   Build:
