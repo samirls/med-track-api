@@ -1,0 +1,7 @@
+api:
+  security:
+    token:
+      secret: ${JWT_SECRET:17712e23-a5fd-4d9e-89af-7c79e97c8b42}
+spring:
+  profiles:
+    active: ${SCOPE:dev}
