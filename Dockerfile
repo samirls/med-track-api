@@ -1,4 +1,4 @@
-FROM openjdk:17-jdk-alpine3.13
+FROM arm64v8/openjdk:17-ea-16-jdk
 
 EXPOSE 8080
 WORKDIR /app
