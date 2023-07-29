@@ -13,7 +13,7 @@ jobs:
         with:
           java-version: 17
           distribution: 'adopt'
-          cache: gradle
+          cache: maven
 
       - name: Set up Maven
         run: sudo apt-get install maven -y
