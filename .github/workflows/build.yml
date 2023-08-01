@@ -38,7 +38,7 @@ jobs:
           docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
 
       - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag samirls/minha-clinica-api
+        run: docker buildx build . --file Dockerfile --tag samirls/minha-clinica-api
 
       - name: Docker Push
         run: docker push samirls/minha-clinica-api

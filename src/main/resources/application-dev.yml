@@ -3,8 +3,6 @@ spring:
     username: postgres
     url: jdbc:postgresql://localhost:5432/med-track-api
     password: '1243'
-  flyway:
-    baseline-on-migrate: 'true'
   jpa:
     hibernate:
       ddl-auto: update
